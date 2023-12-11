@@ -1,0 +1,33 @@
+header {
+    background-color: #d1d1d1;
+    color: #073772;
+    padding: 1rem;
+    text-align: center;
+
+    .logo{
+        font-size: 25px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-family: 'Gabriola';
+    }
+    .img {
+        max-width: 10%;  // Ensure the image doesn't exceed its original size
+        margin: auto;   // Center the image horizontally
+    }
+    
+}
+
+footer {
+    background-color: #d1d1d1;
+    color: #5a5a5a;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10000;
+
+    p {
+        margin: 0;
+    }
+}

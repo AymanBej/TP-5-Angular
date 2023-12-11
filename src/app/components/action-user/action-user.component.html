@@ -1,0 +1,78 @@
+<div class="form_user">
+  <h2>Ajouter une action</h2>
+  <form (ngSubmit)="ajouterAction()">
+    <label
+    >Id l'action: <input name="id" [(ngModel)]="id" required /></label
+  ><br />
+    <label
+      >Nom de l'action: <input name="nom" [(ngModel)]="nom" required /></label
+    ><br />
+    <label
+      >Objectif:
+      <input name="objectif" [(ngModel)]="objectif" required /></label
+    ><br />
+    <label
+      >Nombre de personnes:
+      <input
+        name="nombrePersonnes"
+        type="number"
+        [(ngModel)]="nombrePersonnes"
+        required /></label
+    ><br />
+    <button type="submit">Ajouter</button>
+  </form>
+</div>
+
+<h3>Liste des actions</h3>
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Nom</th>
+      <th>Objectif</th>
+      <th>Nombre de personnes</th>
+      <th>Date de création</th>
+      <th>Statut</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let action of getActions()">
+      <td>{{action.id}}</td>
+      <td>
+        <ng-container *ngIf="!action.editMode; else editMode">
+          {{ action.nom }}
+          <button class="edit" (click)="activerEditMode(action)">
+            Modifier
+          </button>
+        </ng-container>
+        <ng-template #editMode>
+          <input name="nom" [(ngModel)]="action.nom" required />
+          <button class="edit" (click)="desactiverEditMode(action)">
+            Enregistrer
+          </button>
+        </ng-template>
+      </td>
+      <td>{{ action.objectif }}</td>
+      <td>{{ action.nombrePersonnes }}</td>
+      <td>{{ action.dateCreation | date : "medium" }}</td>
+      <td>
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            class="checkbox-input"
+            [(ngModel)]="action.statut"
+            (change)="onStatutChange(action)"
+          />
+          <span class="checkbox-custom"></span>
+        </label>
+      </td>
+      <td style="width: 15%">
+        <button class="delete" (click)="supprimerAction(action)">
+          Supprimer
+        </button>
+        <button class="details" (click)="detailsAction(action.id)">Détails</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

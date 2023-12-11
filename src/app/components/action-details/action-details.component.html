@@ -1,0 +1,12 @@
+<div>
+  
+  <h1>Détails de l'action</h1>
+  <h3>Nom :</h3> <p>{{ action.nom }}</p>
+  <h3>Objectif :</h3> <p>{{ action.objectif }}</p>
+  <h3>Nombre de personnes :</h3> <p>{{ action.nombrePersonnes }}</p>
+  <h3>Date d'inscription :</h3> <p>{{ action.dateCreation | date }}</p>
+  <h3>Nom & Age de responsable :</h3> <p>{{ action.responsable.nom }} - {{ action.responsable.age }} ans</p>
+  <h3>Statut :</h3><p>{{ action.statut }}</p>
+
+  <a routerLink="/actions">Retour</a>
+</div>
